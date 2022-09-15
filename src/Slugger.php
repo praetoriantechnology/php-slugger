@@ -15,25 +15,25 @@ class Slugger
     public function slugify(string $text, string $divider = '-'): string
     {
         // replace non letter or digits by divider
-        $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+        $text = preg_replace(pattern: '~[^\pL\d]+~u', replacement: $divider, subject: $text);
 
         // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        $text = iconv(from_encoding: 'utf-8', to_encoding: 'us-ascii//TRANSLIT', string: $text);
 
         // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
+        $text = preg_replace(pattern: '~[^-\w]+~', replacement: '', subject: $text);
 
         // trim
-        $text = trim($text, $divider);
+        $text = trim(string: $text, characters: $divider);
 
         // remove duplicate divider
-        $text = preg_replace('~-+~', $divider, $text);
+        $text = preg_replace(pattern: '~-+~', replacement: $divider, subject: $text);
 
         // lowercase
-        $text = mb_strtolower($text);
+        $text = mb_strtolower(string: $text);
 
         if (empty($text)) {
-            throw new CannotSlugifyException('An empty string cannot be converted to a slug.');
+            throw new CannotSlugifyException(message: 'An empty string cannot be converted to a slug.');
         }
 
         return $text;
