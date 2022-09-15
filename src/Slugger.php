@@ -10,6 +10,7 @@ class Slugger
      * @param  string  $text
      * @param  string  $divider
      * @return string
+     * @throws CannotSlugifyException
      */
     public function slugify(string $text, string $divider = '-'): string
     {
@@ -32,7 +33,7 @@ class Slugger
         $text = mb_strtolower($text);
 
         if (empty($text)) {
-            return 'n-a';
+            throw new CannotSlugifyException('An empty string cannot be converted to a slug.');
         }
 
         return $text;
