@@ -6,7 +6,12 @@ namespace Praetorian\PhpSlugger;
 
 class Slugger
 {
-    public function slugify($text, string $divider = '-')
+    /**
+     * @param  string  $text
+     * @param  string  $divider
+     * @return string
+     */
+    public function slugify(string $text, string $divider = '-'): string
     {
         // replace non letter or digits by divider
         $text = preg_replace('~[^\pL\d]+~u', $divider, $text);

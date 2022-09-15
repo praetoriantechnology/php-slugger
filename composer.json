@@ -8,11 +8,21 @@
             "Praetorian\\PhpSlugger\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Praetorian\\Tests\\PhpSlugger\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Bartosz from Praetorian Technology",
             "email": "bartosz@praetorian.technology"
+        },
+        {
+            "name": "Davor Minchorov",
+            "email": "davor@praetorian.technology"
         }
+
     ],
     "scripts": {
         "fix": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --allow-risky=yes"
