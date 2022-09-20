@@ -6,30 +6,87 @@ namespace Praetorian\PhpSlugger;
 
 class Slugger
 {
-    public function slugify($text, string $divider = '-')
+    /**
+     * @param  string  $text
+     * @param  string  $divider
+     * @return string
+     * @throws CannotSlugifyException
+     */
+    public function slugify(string $text, string $divider = '-'): string
     {
-        // replace non letter or digits by divider
-        $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+        $text = $this->replaceNonLetterOrDigitsByDivider(text: $text, divider: $divider);
 
-        // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        $text = $this->transliterate(text: $text);
 
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
+        $text = $this->removeUnwantedCharacters(text: $text);
 
-        // trim
-        $text = trim($text, $divider);
+        $text = $this->trimText(text: $text, divider: $divider);
 
-        // remove duplicate divider
-        $text = preg_replace('~-+~', $divider, $text);
+        $text = $this->removeDuplicateDivider(text: $text, divider: $divider);
 
-        // lowercase
-        $text = mb_strtolower($text);
+        $text = $this->lowerCaseText(text: $text);
 
         if (empty($text)) {
-            return 'n-a';
+            throw new CannotSlugifyException(message: 'An empty string cannot be converted to a slug.');
         }
 
         return $text;
+    }
+
+    /**
+     * @param  string  $text
+     * @param  string  $divider
+     * @return array|string|string[]|null
+     */
+    private function replaceNonLetterOrDigitsByDivider(string $text, string $divider): array|string|null
+    {
+        return preg_replace(pattern: '~[^\pL\d]+~u', replacement: $divider, subject: $text);
+    }
+
+    /**
+     * @param  array|string|null  $text
+     * @return bool|string
+     */
+    private function transliterate(array|string|null $text): bool|string
+    {
+        return iconv(from_encoding: 'utf-8', to_encoding: 'us-ascii//TRANSLIT', string: $text);
+    }
+
+    /**
+     * @param  bool|string  $text
+     * @return array|string|null
+     */
+    private function removeUnwantedCharacters(bool|string $text): array|string|null
+    {
+        return preg_replace(pattern: '~[^-\w]+~', replacement: '', subject: $text);
+    }
+
+    /**
+     * @param  string  $text
+     * @param  string  $divider
+     * @return string
+     */
+    private function trimText(string $text, string $divider): string
+    {
+        return trim(string: $text, characters: $divider);
+    }
+
+    /**
+     * @param  string  $text
+     * @param  string  $divider
+     * @return array|string|string[]|null
+     */
+    private function removeDuplicateDivider(string $text, string $divider): array|string|null
+    {
+        return preg_replace(pattern: '~-+~', replacement: $divider, subject: $text);
+    }
+
+    /**
+     * @param  string  $text
+     * @return array|false|string|string[]|null
+     */
+    private function lowerCaseText(string $text): array|bool|string|null
+    {
+        return mb_strtolower(string: $text);
     }
 }

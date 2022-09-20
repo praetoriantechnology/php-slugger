@@ -8,11 +8,21 @@
             "Praetorian\\PhpSlugger\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Praetorian\\Tests\\PhpSlugger\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Bartosz from Praetorian Technology",
             "email": "bartosz@praetorian.technology"
+        },
+        {
+            "name": "Davor Minchorov",
+            "email": "davor@praetorian.technology"
         }
+
     ],
     "scripts": {
         "fix": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --allow-risky=yes"
@@ -24,6 +34,9 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3"
+        "friendsofphp/php-cs-fixer": "^3",
+        "phpunit/phpunit": "^9.5",
+        "phpunit/php-code-coverage": "^9.2",
+        "behat/behat": "^3.11"
     }
 }
