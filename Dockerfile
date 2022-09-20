@@ -1,10 +1,10 @@
-FROM php:8.1-fpm
+FROM php:8.1-cli
 
 VOLUME [ "/var/www/html"]
 RUN mkdir ~/.ssh/
 COPY __build/ssh /root/.ssh/
 RUN chmod 700 -R ~/.ssh
-
+WORKDIR /var/www/html
 # install system deps
 RUN apt-get update \
     && apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev libpng-dev zlib1g-dev libicu-dev g++ libxml2-dev git zip wget ca-certificates libmpdec-dev libzip-dev curl
@@ -28,3 +28,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # configure limits
 RUN echo 'memory_limit=1024M' > /usr/local/etc/php/conf.d/memory_limit.ini
+ENTRYPOINT [ "php" ]
+CMD ["-F"]

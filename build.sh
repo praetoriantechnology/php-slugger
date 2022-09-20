@@ -1,1 +1,1 @@
-docker build -t slugger .
+docker build -t slugger-tester .

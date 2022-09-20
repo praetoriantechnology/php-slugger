@@ -25,7 +25,12 @@
 
     ],
     "scripts": {
-        "fix": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --allow-risky=yes"
+        "fix": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --allow-risky=yes",
+        "test": [
+            "composer install",
+            "./vendor/bin/phpunit",
+            "./vendor/bin/behat"
+        ]
     },
     "minimum-stability": "stable",
     "require": {
