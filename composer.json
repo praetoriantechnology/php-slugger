@@ -5,12 +5,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Praetorian\\PhpSlugger\\": "src/"
+            "Praetorian\\Slugger\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Praetorian\\Tests\\PhpSlugger\\": "tests/"
+            "Praetorian\\Tests\\Slugger\\": "tests/"
         }
     },
     "authors": [

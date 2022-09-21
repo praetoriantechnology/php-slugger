@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Praetorian\Tests\PhpSlugger\Behat;
+namespace Praetorian\Tests\Slugger\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit\Framework\Assert;
-use Praetorian\PhpSlugger\CannotSlugifyException;
-use Praetorian\PhpSlugger\Slugger;
+use Praetorian\Slugger\CannotSlugifyException;
+use Praetorian\Slugger\Slugger;
 
-class PhpSluggerContext implements Context
+class SluggerContext implements Context
 {
     private string $result;
 

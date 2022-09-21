@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Praetorian\Tests\PhpSlugger;
+namespace Praetorian\Tests\Slugger;
 
 use PHPUnit\Framework\TestCase;
-use Praetorian\PhpSlugger\CannotSlugifyException;
-use Praetorian\PhpSlugger\Slugger;
+use Praetorian\Slugger\CannotSlugifyException;
+use Praetorian\Slugger\Slugger;
 
-final class PhpSluggerTest extends TestCase
+final class SluggerTest extends TestCase
 {
     /**
      * @test

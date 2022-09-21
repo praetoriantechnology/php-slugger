@@ -1,6 +1,6 @@
 <?php
 
-namespace Praetorian\PhpSlugger;
+namespace Praetorian\Slugger;
 
 class CannotSlugifyException extends \Exception
 {

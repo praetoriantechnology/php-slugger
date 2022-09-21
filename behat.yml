@@ -2,5 +2,5 @@ default:
     suites:
         default:
             contexts:
-                - Praetorian\Tests\PhpSlugger\Behat\PhpSluggerContext
+                - Praetorian\Tests\Slugger\Behat\SluggerContext
 

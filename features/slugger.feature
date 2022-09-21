@@ -1,5 +1,5 @@
 Feature: Slugger
-  In order to prove that the PhpSlugger is working properly
+  In order to prove that the Slugger is working properly
   As a developer,
   I need to be able to generate a slug from a string
 
