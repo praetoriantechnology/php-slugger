@@ -49,7 +49,6 @@ class Slugger
      */
     private function transliterate(array|string|null $text): bool|string
     {
-        return 'failure test';
         return iconv(from_encoding: 'utf-8', to_encoding: 'us-ascii//TRANSLIT', string: $text);
     }
 
